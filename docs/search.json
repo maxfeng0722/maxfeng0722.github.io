@@ -1,16 +1,30 @@
 [
   {
+    "objectID": "olympic_athletes_and_medals.html",
+    "href": "olympic_athletes_and_medals.html",
+    "title": "Olympic Athletes",
+    "section": "",
+    "text": "The link to the TidyTuesday resource is: https://github.com/rfordatascience/tidytuesday/tree/main/data/2024/2024-08-06\nThe original data comes from: https://www.kaggle.com/datasets/heesoo37/120-years-of-olympic-history-athletes-and-results/\n\n\n\n\n\n\n\n\n\nIn this analysis, I made a scatterplot of the height of the athletes from 1896 to 2016. The x-axis is the year ranging from 1896 to 2016, and the y-axis is the height of the athletes in centimeters. The red data points represent female athletes while the green data points represent male athletes."
+  },
+  {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "About this site\n\n1 + 1\n\n[1] 2"
+    "text": "I’m Junshu Feng, and you can call me Max. I am a junior at Pomona College majoring in mathematics and minoring in data science. I am from Changzhou, China. It’s a relatively small city but it’s only one hour away from Shanghai by train. I love my neighborhoods because of the amazing restaurants nearby. I love music and sports. I also love to hang out with my friends."
   },
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "maxfeng0722.github.io",
+    "title": "Max Feng",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2"
+    "text": "Hi there! I’m Junshu Feng, and you can call me Max. I am a junior at Pomona College majoring in mathematics and minoring in data science. I am from Changzhou, China. It’s a relatively small city but it’s only one hour away from Shanghai by train. I love my neighborhoods because of the amazing restaurants nearby. I love music and sports. I also love to hang out with my friends. Check out my website if you want to know more about me!\nThe link to the Github repo is: https://github.com/maxfeng0722/maxfeng0722.github.io"
+  },
+  {
+    "objectID": "us_solar.html",
+    "href": "us_solar.html",
+    "title": "US Solar/Wind",
+    "section": "",
+    "text": "The link to the TidyTuesday resource is: https://github.com/rfordatascience/tidytuesday/tree/main/data/2022/2022-05-03\nThe original data comes from: https://emp.lbl.gov/utility-scale-solar\n\n\n\n\n\n\n\n\n\nIn this analysis, I made a scatterplot of the total capacity of different source types such as solar and wind from 2014 to 2020. The x-axis is the year ranging from 2014 to 2020, and the y-axis represents the total capacity of the energy sources in gigawatts. Different colors represent different energy types."
   }
 ]

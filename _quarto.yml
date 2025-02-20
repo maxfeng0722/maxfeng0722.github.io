@@ -3,18 +3,25 @@ project:
   output-dir: docs
   
 website:
-  title: "maxfeng0722.github.io"
+  title: "Max Feng"
   navbar:
     left:
       - href: index.qmd
         text: Home
       - about.qmd
-
+      - text: "Data Viz"
+        menu: 
+          - href: us_solar.qmd
+            text: "US Solar/Wind"
+          - href: olympic_athletes_and_medals.qmd
+            text: "Olympic Athletes and Medals"
+            
 format:
   html:
     theme: cosmo
     css: styles.css
     toc: true
-
+    page-layout: full
+    
 editor: visual
 

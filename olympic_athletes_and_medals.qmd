@@ -1,0 +1,26 @@
+---
+title: "Olympic Athletes"
+description: |
+  Analysis of the height of Olympic athletes
+author: Max Feng
+date: February 19, 2025
+format: html
+execute:
+  echo: false
+---
+
+The link to the TidyTuesday resource is: <https://github.com/rfordatascience/tidytuesday/tree/main/data/2024/2024-08-06>
+
+The original data comes from: <https://www.kaggle.com/datasets/heesoo37/120-years-of-olympic-history-athletes-and-results/>
+
+```{r}
+library(ggplot2)
+olympics <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2024/2024-08-06/olympics.csv', show_col_types = FALSE)
+sub_olympics <- olympics |>
+dplyr::filter(!is.na(olympics $ height))
+ggplot(sub_olympics, aes(x = year, y = height, color = sex)) +
+geom_point(alpha = 0.7) +
+labs(title = "Height of athletes in different years")
+```
+
+In this analysis, I made a scatterplot of the height of the athletes from 1896 to 2016. The x-axis is the year ranging from 1896 to 2016, and the y-axis is the height of the athletes in centimeters. The red data points represent female athletes while the green data points represent male athletes.

@@ -1,0 +1,28 @@
+---
+title: "US Solar/Wind"
+description: |
+  Analysis of US power data
+author: Max Feng
+date: February 19, 2025
+format: html
+execute:
+  echo: false
+---
+
+The link to the TidyTuesday resource is: <https://github.com/rfordatascience/tidytuesday/tree/main/data/2022/2022-05-03>
+
+The original data comes from: <https://emp.lbl.gov/utility-scale-solar>
+
+```{r}
+capacity <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2022/2022-05-03/capacity.csv', show_col_types = FALSE)
+library(ggplot2)
+ggplot(capacity, aes(x = year, y = total_gw)) +
+  geom_point(aes(color = type)) + 
+  labs(
+    y = "total gigawatts",
+    title = "total capacity of different source types from 2014 to 2020"
+  )
+
+```
+
+In this analysis, I made a scatterplot of the total capacity of different source types such as solar and wind from 2014 to 2020. The x-axis is the year ranging from 2014 to 2020, and the y-axis represents the total capacity of the energy sources in gigawatts. Different colors represent different energy types.

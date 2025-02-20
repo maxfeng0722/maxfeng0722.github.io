@@ -1,11 +1,14 @@
 ---
-title: "maxfeng0722.github.io"
+title: "Max Feng"
+toc: false
+about: 
+  template: solana
+  image: Photo.jpg
+  image-shape: rectangle
+  image-width: 17em
 ---
 
-This is a Quarto website.
+Hi there! I'm Junshu Feng, and you can call me Max. I am a junior at Pomona College majoring in mathematics and minoring in data science. I am from Changzhou, China. It's a relatively small city but it's only one hour away from Shanghai by train. I love my neighborhoods because of the amazing restaurants nearby. I love music and sports. I also love to hang out with my friends. Check out my website if you want to know more about me!
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+The link to the Github repo is: https://github.com/maxfeng0722/maxfeng0722.github.io
 
-```{r}
-1 + 1
-```
