@@ -16,7 +16,7 @@ The original data comes from: <https://www.kaggle.com/datasets/shivamb/netflix-s
 Part I: String Data Wrangling
 
 ```{r}
-library(dplyr)
+library(dplyr, warn.conflicts = FALSE)
 library(stringr)
 library(ggplot2)
 netflix_titles <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2021/2021-04-20/netflix_titles.csv', show_col_types = FALSE)
