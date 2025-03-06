@@ -55,4 +55,4 @@ ggplot(netflix_titles, aes(x = rating, fill = rating)) +
        x = "rating systems")
 ```
 
-In this analysis, I made a bar graph that analyzes the number of Netflix shows with different rating systems. The x-axis is the different rating systems and the y-axis is the number of shows that use a specific rating system. TV-MA has the most uses in shows, with 2863 shows that fall into this category. Very few shows use NC-17, TV-Y7-FV, and UR.
+In this analysis, I made a bar plot that analyzes the number of Netflix shows with different rating systems. The x-axis is the different rating systems and the y-axis is the number of shows that use a specific rating system. TV-MA has the most uses in shows, with 2863 shows that fall into this category. Very few shows use NC-17, TV-Y7-FV, and UR.
