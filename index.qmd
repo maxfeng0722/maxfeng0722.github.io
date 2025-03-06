@@ -11,4 +11,3 @@ about:
 Hi there! I'm Junshu Feng, and you can call me Max. I am a junior at Pomona College majoring in mathematics and minoring in data science. I am from Changzhou, China. It's a relatively small city but it's only one hour away from Shanghai by train. I love my neighborhoods because of the amazing restaurants nearby. I love music and sports. I also love to hang out with my friends. Check out my website if you want to know more about me!
 
 The link to the Github repo is: https://github.com/maxfeng0722/maxfeng0722.github.io
-

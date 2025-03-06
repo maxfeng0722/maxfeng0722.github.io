@@ -8,14 +8,14 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - about.qmd
       - text: "Data Viz"
         menu: 
           - href: us_solar.qmd
             text: "US Solar/Wind"
           - href: olympic_athletes_and_medals.qmd
             text: "Olympic Athletes and Medals"
-            
+      - href: text_analysis.qmd
+        text: Text Analysis
 format:
   html:
     theme: cosmo

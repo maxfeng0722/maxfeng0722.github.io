@@ -1,0 +1,58 @@
+---
+title: "Text Analysis"
+description: |
+  Analysis of the Netflix shows
+author: Max Feng
+date: March 5, 2025
+format: html
+execute:
+  echo: TRUE
+---
+
+The link to the TidyTuesday resource is: <https://github.com/rfordatascience/tidytuesday/blob/main/data/2021/2021-04-20/readme.md>
+
+The original data comes from: <https://www.kaggle.com/datasets/shivamb/netflix-shows>
+
+Part I: String Data Wrangling
+
+```{r}
+library(dplyr)
+library(stringr)
+library(ggplot2)
+netflix_titles <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2021/2021-04-20/netflix_titles.csv', show_col_types = FALSE)
+new_netflix_titles <- netflix_titles |>
+  mutate(show_id_num = str_sub(show_id, 2, )) |>
+  mutate(title_length = str_length(title)) |>
+  mutate(us_show = str_detect(country, "United States"))
+love_titles <- netflix_titles |>
+  filter(str_detect(title, "\\bLove\\b"))
+shows_at_2000s <- netflix_titles |>
+  filter(str_detect(release_year, "200[0-9]$"))
+comedy_shows <- netflix_titles |>
+  filter(str_detect(listed_in, "\\bComedies\\b"))
+comedies_only <- comedy_shows |>
+  filter(str_detect(listed_in, "(?<! )Comedies(?!,)"))
+```
+
+Part II: Distribution of Title Lengths of the Shows
+
+```{r}
+ggplot(new_netflix_titles, aes(x = title_length)) +
+  geom_histogram(binwidth = 3) +
+  labs(title = "distribution of title lengths of shows", 
+       x = "length of titles")
+```
+
+In this analysis, I made a histogram of the distribution of title lengths of the shows in Netflix. The x-axis is the value of different lengths, and the y-axis is the number of shows at a certain value of the title length. In general, the distribution is right-skewed. Most shows have the title length between 8-16 characters. Very few shows have the title length greater than 50 characters.
+
+Part III: Rating Systems of the Shows
+
+```{r}
+ggplot(netflix_titles, aes(x = rating, fill = rating)) +
+  geom_bar() +
+  geom_label(stat = "count", aes(label = after_stat(count))) +
+  labs(title = "distribution of the rating systems of shows", 
+       x = "rating systems")
+```
+
+In this analysis, I made a bar graph that analyzes the number of Netflix shows with different rating systems. The x-axis is the different rating systems and the y-axis is the number of shows that use a specific rating system. TV-MA has the most uses in shows, with 2863 shows that fall into this category. Very few shows use NC-17, TV-Y7-FV, and UR.
