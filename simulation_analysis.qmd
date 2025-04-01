@@ -1,0 +1,76 @@
+---
+title: "Simulation Analysis"
+description: |
+  Analysis of a room draw simulation
+author: Max Feng
+date: March 31, 2025
+format: html
+execute:
+  echo: TRUE
+---
+
+In this project, I simulated the room draw process where students are randomly assigned an order to pick the rooms. I wanted to know the probability of a student Max getting a preferred room, given different number of students and number of rooms. To make the case simpler, I assumed that all the rooms are singles (so there are always more or an equal number of rooms than students). Also, Max has preferences for three rooms that are randomly generated. Everyone picks a random room and when it comes to Max's turn, if any of the rooms that he prefers is still not occupied, then he gets to choose that room and therefore he gets the preferred room. Otherwise, he does not get the preferred room.
+
+```{r}
+library(tidyverse)
+library(ggrepel)
+library(ggplot2)
+room_draw <- function(room, student, preference){
+  room_number <- 1:room
+  my_order <- sample(1:student, 1)
+  my_preferred_room <- sample(room_number, preference, replace = FALSE)
+  earlier_picks <- c()
+  if (my_order != 1) {
+    earlier_picks <- sample(room_number, my_order - 1)
+  }
+  for (i in my_preferred_room){
+    if (!(i %in% earlier_picks)) {
+      return (TRUE)
+    }
+  }
+  return (FALSE)
+}
+
+simulation <- function(room, student, preference = 3, n = 1000){
+  return(sum(replicate(n, room_draw(room, student, preference))))
+}
+
+df <- expand_grid(student = seq(400, 1600, by = 50),
+                  ratio = seq(1.0, 2.0, by = 0.1),
+                  preference = c(3)) |>
+  mutate(room = student * ratio)
+
+set.seed(47)
+sim_results <- df |>
+  mutate(
+    success = pmap(list(room, student, preference), 
+                  ~ simulation(room = ..1, student = ..2, preference = ..3)),
+    prob = as.numeric(success) / 1000
+    )
+```
+
+In the code block above, I started with a function that simulates the room draw process. The output is TRUE if Max gets his preferred room and FALSE if he doesn't. Then, I wrote a second function that does the simulation 1000 times given the study number and room number. I created a data frame that has four columns. The first column is the student counts from 400 to 1600 in steps of 50. Each student count has eleven rows. The second column is a ratio between room count and student count from 1.0 to 2.0 in steps of 0.1. The fourth column is the actual room count given the ratio and student count of each row. The third column is the number of preferred rooms, which is set to be 3. I ran the simulation 1000 times to each row of data and concluded with the probability of getting the preferred room in each scenario.
+
+```{r}
+ggplot(sim_results, aes(x = student, y = prob)) +
+  geom_point() +
+  geom_text_repel(aes(label = room), size = 1.5) +
+  labs(
+    title = "Room Draw Success Probability 1",
+    x = "Number of Students",
+    y = "Probability of Getting a Preferred Room"
+  )
+
+ggplot(sim_results, aes(x = room, y = prob)) +
+  geom_point() +
+  geom_text_repel(aes(label = student), size = 1.0) +
+  labs(
+    title = "Room Draw Success Probability 2",
+    x = "Number of Rooms",
+    y = "Probability of Getting a Preferred Room"
+  )
+```
+
+In this section, I made two scatterplots to visualize the results from the previous section. In the first plot, the x-axis is the number of students and the label of each point is the number of rooms. The y-axis is the probability of getting a preferred room in each scenario. In the second plot, the y-axis is the same variable, while the x-axis is the number of rooms and the label of each point is the number of students. According to the plots, when the number of students and the number of rooms are the same, the probability of getting a preferred room is around 0.75. When the number of rooms are twice the number of students, the probability of getting a preferred room increases to around 0.95. With a fixed room count, the more students there are, the less likely Max is getting a preferred room. With a fixed student count, the more rooms there are, the more likely Max is getting a preferred room.
+
+In conclusion, in this simulation, I explored the probability of a student getting a preferred room with varying room count and student count. The effect of number of preferences on the probability can also be investigated using the functions I created. Also, the room count and the student count can also be easily manipulated to explore a specific scenario one wants.

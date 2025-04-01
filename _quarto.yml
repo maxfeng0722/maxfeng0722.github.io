@@ -16,6 +16,8 @@ website:
             text: "Olympic Athletes and Medals"
       - href: text_analysis.qmd
         text: Text Analysis
+      - href: simulation_analysis.qmd
+        text: Simulation Analysis
 format:
   html:
     theme: cosmo
