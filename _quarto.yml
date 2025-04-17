@@ -18,6 +18,8 @@ website:
         text: Text Analysis
       - href: simulation_analysis.qmd
         text: Simulation Analysis
+      - href: ethics.qmd
+        text: Ethics
 format:
   html:
     theme: cosmo

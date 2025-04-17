@@ -7,6 +7,8 @@ date: March 31, 2025
 format: html
 execute:
   echo: TRUE
+  warning: false
+  message: false
 ---
 
 In this project, I simulated the room draw process where students are randomly assigned an order to pick the rooms. I wanted to know the probability of a student Max getting a preferred room, given different number of students and number of rooms. To make the case simpler, I assumed that all the rooms are singles (so there are always more or an equal number of rooms than students). Also, Max has preferences for three rooms that are randomly generated. Everyone picks a random room and when it comes to Max's turn, if any of the rooms that he prefers is still not occupied, then he gets to choose that room and therefore he gets the preferred room. Otherwise, he does not get the preferred room.

@@ -7,6 +7,8 @@ date: March 5, 2025
 format: html
 execute:
   echo: TRUE
+  warning: false
+  message: false
 ---
 
 The link to the TidyTuesday resource is: <https://github.com/rfordatascience/tidytuesday/blob/main/data/2021/2021-04-20/readme.md>

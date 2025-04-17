@@ -7,10 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Max Feng">
-<meta name="dcterms.date" content="2025-03-31">
-<meta name="description" content="Analysis of a room draw simulation">
+<meta name="dcterms.date" content="2025-04-16">
+<meta name="description" content="Analysis of Anonymity of Data">
 
-<title>Simulation Analysis – Max Feng</title>
+<title>Data Science Ethics – Max Feng</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,40 +22,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -149,11 +115,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Text Analysis</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./simulation_analysis.html" aria-current="page"> 
+    <a class="nav-link" href="./simulation_analysis.html"> 
 <span class="menu-text">Simulation Analysis</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./ethics.html"> 
+    <a class="nav-link active" href="./ethics.html" aria-current="page"> 
 <span class="menu-text">Ethics</span></a>
   </li>  
 </ul>
@@ -175,12 +141,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Simulation Analysis</h1>
+<h1 class="title">Data Science Ethics</h1>
 </div>
 
 <div>
   <div class="description">
-    <p>Analysis of a room draw simulation</p>
+    <p>Analysis of Anonymity of Data</p>
   </div>
 </div>
 
@@ -197,7 +163,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 31, 2025</p>
+      <p class="date">April 16, 2025</p>
     </div>
   </div>
   
@@ -209,79 +175,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>In this project, I simulated the room draw process where students are randomly assigned an order to pick the rooms. I wanted to know the probability of a student Max getting a preferred room, given different number of students and number of rooms. To make the case simpler, I assumed that all the rooms are singles (so there are always more or an equal number of rooms than students). Also, Max has preferences for three rooms that are randomly generated. Everyone picks a random room and when it comes to Max’s turn, if any of the rooms that he prefers is still not occupied, then he gets to choose that room and therefore he gets the preferred room. Otherwise, he does not get the preferred room.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggrepel)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>room_draw <span class="ot">&lt;-</span> <span class="cf">function</span>(room, student, preference){</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  room_number <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span>room</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  my_order <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span>student, <span class="dv">1</span>)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  my_preferred_room <span class="ot">&lt;-</span> <span class="fu">sample</span>(room_number, preference, <span class="at">replace =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  earlier_picks <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (my_order <span class="sc">!=</span> <span class="dv">1</span>) {</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    earlier_picks <span class="ot">&lt;-</span> <span class="fu">sample</span>(room_number, my_order <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> my_preferred_room){</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="sc">!</span>(i <span class="sc">%in%</span> earlier_picks)) {</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>      <span class="fu">return</span> (<span class="cn">TRUE</span>)</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span> (<span class="cn">FALSE</span>)</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>simulation <span class="ot">&lt;-</span> <span class="cf">function</span>(room, student, <span class="at">preference =</span> <span class="dv">3</span>, <span class="at">n =</span> <span class="dv">1000</span>){</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">sum</span>(<span class="fu">replicate</span>(n, <span class="fu">room_draw</span>(room, student, preference))))</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">expand_grid</span>(<span class="at">student =</span> <span class="fu">seq</span>(<span class="dv">400</span>, <span class="dv">1600</span>, <span class="at">by =</span> <span class="dv">50</span>),</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>                  <span class="at">ratio =</span> <span class="fu">seq</span>(<span class="fl">1.0</span>, <span class="fl">2.0</span>, <span class="at">by =</span> <span class="fl">0.1</span>),</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>                  <span class="at">preference =</span> <span class="fu">c</span>(<span class="dv">3</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">room =</span> student <span class="sc">*</span> ratio)</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">47</span>)</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>sim_results <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">success =</span> <span class="fu">pmap</span>(<span class="fu">list</span>(room, student, preference), </span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>                  <span class="sc">~</span> <span class="fu">simulation</span>(<span class="at">room =</span> ..<span class="dv">1</span>, <span class="at">student =</span> ..<span class="dv">2</span>, <span class="at">preference =</span> ..<span class="dv">3</span>)),</span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">prob =</span> <span class="fu">as.numeric</span>(success) <span class="sc">/</span> <span class="dv">1000</span></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>In the code block above, I started with a function that simulates the room draw process. The output is TRUE if Max gets his preferred room and FALSE if he doesn’t. Then, I wrote a second function that does the simulation 1000 times given the study number and room number. I created a data frame that has four columns. The first column is the student counts from 400 to 1600 in steps of 50. Each student count has eleven rows. The second column is a ratio between room count and student count from 1.0 to 2.0 in steps of 0.1. The fourth column is the actual room count given the ratio and student count of each row. The third column is the number of preferred rooms, which is set to be 3. I ran the simulation 1000 times to each row of data and concluded with the probability of getting the preferred room in each scenario.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sim_results, <span class="fu">aes</span>(<span class="at">x =</span> student, <span class="at">y =</span> prob)) <span class="sc">+</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(<span class="fu">aes</span>(<span class="at">label =</span> room), <span class="at">size =</span> <span class="fl">1.5</span>) <span class="sc">+</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Room Draw Success Probability 1"</span>,</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Number of Students"</span>,</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Probability of Getting a Preferred Room"</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="simulation_analysis_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sim_results, <span class="fu">aes</span>(<span class="at">x =</span> room, <span class="at">y =</span> prob)) <span class="sc">+</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(<span class="fu">aes</span>(<span class="at">label =</span> student), <span class="at">size =</span> <span class="fl">1.0</span>) <span class="sc">+</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Room Draw Success Probability 2"</span>,</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Number of Rooms"</span>,</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Probability of Getting a Preferred Room"</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="simulation_analysis_files/figure-html/unnamed-chunk-2-2.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>In this section, I made two scatterplots to visualize the results from the previous section. In the first plot, the x-axis is the number of students and the label of each point is the number of rooms. The y-axis is the probability of getting a preferred room in each scenario. In the second plot, the y-axis is the same variable, while the x-axis is the number of rooms and the label of each point is the number of students. According to the plots, when the number of students and the number of rooms are the same, the probability of getting a preferred room is around 0.75. When the number of rooms are twice the number of students, the probability of getting a preferred room increases to around 0.95. With a fixed room count, the more students there are, the less likely Max is getting a preferred room. With a fixed student count, the more rooms there are, the more likely Max is getting a preferred room.</p>
-<p>In conclusion, in this simulation, I explored the probability of a student getting a preferred room with varying room count and student count. The effect of number of preferences on the probability can also be investigated using the functions I created. Also, the room count and the student count can also be easily manipulated to explore a specific scenario one wants.</p>
+<p>Privacy is widely recognized as a stringent right of human beings. In data science, data anonymization helps ensure individuals’ privacy by removing personal information of the respondants. However, as computational techniques become more advanced, supposedly anonymized data can be re-identified, which leads to some serious ethical concerns.</p>
+<p>In this project, I will analyze this ethical concern by scrutinizing two news articles that highlight the problem of poorly anonymized data and responding to four important questions. The first article by Dan Goodin introduces a dataset of New York City taxi trip records in which drivers’ hack license numbers and medallion numbers were obscured using the MD5 algorithm. However, this model has proven to be flawed since a software developer successfully de-anonymized all the data. In the second article by Natasha Singer, the author incorporates many cases with poorly anonymized data and thereby claims that the old model of anonymization is no longer effective in the metadata era. One case that is brought to most attention is an analysis of credit card transactions by 1.1 million people in 10000 stores over a three-month period. Personal details were removed from the dataset, but the columns contained in the dataset are enough to re-identify 90 percent of the shoppers.</p>
+<p>The first question to respond to is: Were the data made publicly available? In the first article regarding NYC taxi trip records, the data were made publicly available. Indeed, the data were released in response to a public records request. However, though more information regarding drivers’ movements was revealed to public, taxi drivers’ personal information was also leaked by decoding the encryption and therefore, their privacy rights were infringed. In the second article, the data of credit card transactions were also made publicly available, which is exactly the reason why the ethical concern of revealing personal identity was raised.</p>
+<p>The second item to respond to is: Is the data identifiable? All of it? Some of it? In what way? Are the data sufficiently anonymized or old to be free of ethical concerns? Is anonymity guaranteed? In the first article regarding NYC taxi trip records, all of the data became identifiable after running all possible iterations of the patterns structured by the MD5 algorithm. According to the article, the data were not sufficiently anonymized since NYC officials could do the following two things to improve the anonymity: assigning a random number to each hack license number and medallion number and creating a secret AES key to encrypt each value individually. In the second article, 90% of the data became identifiable after combining the disclosed items in the dataset (the date of each transaction, amount charged and name of the store) with publicly available information (Instagram or Twitter posts). In this case, the researchers tried their best to make their data anonymized. However, with a huge amount of addition data, it is still possible to deduce personal information.</p>
+<p>The third item to consider is the eleventh of Data Values and Principles Manifesto, which states that “as data teams, we aim to protect the privacy and security of individuals represented in our data”. This item is closely related to the ethical concern of privacy infringement. In both cases, the data teams did not successfully protect the privacy of the individuals. In the first article, taxi drivers’ personal information as well as their movements were revealed by cracking the encryption. In the second article, credit card users’ personal identity and each of their transactions were revealed by the released data and additional public data on the Internet.</p>
+<p>The fourth item to ruminate is the first item of Data Values and Principles Manifesto, contending that “as data teams, we aim to use data to improve life for our users, customers, organizations, and communities”. I think that both datasets help improve life for the communities. In the first case of NYC taxi trip records, the NYC officials could have a better sense of the areas that had the most taxis driving by, which implies that those areas may need more taxis around so that people can find an available taxi faster and life gets more convenient. In the second case of credit card transactions, the dataset is worth studying as it outlines the living patterns and habits of individuals. Scientists will be able to infer the individuals’ decision-making processes and conclude brilliant findings in psychology and sociology.</p>
+<p>The two chosen articles provide different perspectives to analyze the ethical concern of privacy. The first article presents a case where the anonymization process is flawed and can be improved. The second article provides bad news to the entire anonymization process: any de-identification methods can be cracked and there is always the threat to disclose personal information. Does this mean we should stop producing public data? I don’t this is the case either as the two articles have proven that the datasets can make life easier and better. Therefore, in face of the awkward situation, another ethical dilemma between data disclosure and privacy is put forward: if data are destined to infringe privacy, how many datasets and how much information should we disclose publicly to make a balance between data and privacy?</p>
+<p><strong>References</strong></p>
+<p>Goodin, D. (2014). <em>Poorly anonymized logs reveal NYC cab drivers’ detailed whereabouts</em>. Ars Technica.</p>
+<p>Singer, N. (2015). <em>With a few bits of data, researchers identify “anonymous” people</em>. The New York Times.</p>
 
 
 
