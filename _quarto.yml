@@ -20,6 +20,8 @@ website:
         text: Simulation Analysis
       - href: ethics.qmd
         text: Ethics
+      - href: SQL.qmd
+        text: SQL
 format:
   html:
     theme: cosmo
