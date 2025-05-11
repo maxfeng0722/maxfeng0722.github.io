@@ -80,8 +80,8 @@
     "objectID": "room_draw_presentation.html#room-draw-simulation",
     "href": "room_draw_presentation.html#room-draw-simulation",
     "title": "Simulation of Room Draw",
-    "section": "Room Draw Simulation",
-    "text": "Room Draw Simulation\n\nAssume all the rooms are singles.\nEvery student is assigned a random order to pick the rooms.\nMax has three randomly generated preferred rooms.\nWhen it comes to Max’s turn to pick his room, if one of his preferred rooms is still available, then he gets his preferred room. Otherwise he doesn’t get it.\nThe goal is to find the probability of Max getting his preferred room given the total number of rooms and total number of students."
+    "section": "",
+    "text": "Assume all the rooms are singles.\nEvery student is assigned a random order to pick the rooms.\nMax has three randomly generated preferred rooms.\nWhen it comes to Max’s turn to pick his room, if one of his preferred rooms is still available, then he gets his preferred room. Otherwise he doesn’t get it.\nThe goal is to find the probability of Max getting his preferred room given the total number of rooms and total number of students."
   },
   {
     "objectID": "room_draw_presentation.html#my-code",
@@ -117,5 +117,54 @@
     "title": "Simulation of Room Draw",
     "section": "Visualization of Results",
     "text": "Visualization of Results\n\n\nexpand for full code\nggplot(sim_results, aes(x = room, y = prob)) +\n  geom_point() +\n  geom_text_repel(aes(label = student), size = 1.0) +\n  labs(\n    title = \"Room Draw Success Probability 2\",\n    x = \"Number of Rooms\",\n    y = \"Probability of Getting a Preferred Room\"\n  )"
+  },
+  {
+    "objectID": "resume.html",
+    "href": "resume.html",
+    "title": "Max (Junshu) Feng",
+    "section": "",
+    "text": "Email: jfwv2022@mymail.pomona.edu | Phone: (909) 367 - 6812 | Claremont, CA 91711\n\n\nPomona College\nClaremont, CA\nExpected May 2026\nBachelor of Arts, Mathematics Major, Data Science Minor\n\nGPA: 3.95/4.0; Pomona College Scholar for Fall 2022, Fall 2023, Spring 2024 and Fall 2024\nRelevant Coursework: \n\nNumber Theory and Cryptography (Topics: Prime factorization, congruences and modular arithmetic, Fermat’s little theorem, Euler’s phi function, and quadratic reciprocity)\nPrinciples of Real Analysis I (Topics: Countable sets, least upper bounds and metric space topology including compactness, completeness, connectivity and uniform convergence)\nModern Geometry (Topics: Euclidean geometry, discrete geometry, hyperbolic geometry, elliptical geometry, and projective geometry)\nAbstract Algebra I (Algebra in Action: A Course in Groups, Rings, and Fields by S. Shahriari)\nDifferential Equations (Elementary Differential Equations (12th Edition) by Boyce, DiPrima, and Meade)\nAdvanced Linear Algebra (Matrix Mathematics: A Second Course In Linear Algebra by Garcia and Horn)\n\n\n\n\n\n1-2-1 Math Program at Pomona College\nClaremont, CA\nTeaching Assistant\nJun. 2024 - Aug. 2024\n\nMatched with 16 incoming freshmen at Pomona College and held two weekly meetings to discuss math problems and other topics regarding life at Pomona\nHeld two additional weekly open sessions for all students to ask any questions\nProvided feedback on students’ submitted problem sets\nOrganized social events for all students to get to know each other\n\n\nMathematics and Statistics Department at Pomona College\nClaremont, CA\nLinear Algebra (Math 60) Mentor & Grader\nAug. 2024 - Dec. 2024\n\nHosted weekly mentor sessions to help students enrolled in Math 60 with their homework assignments\nHeld review sessions to provide insight into sample problems and familiarize students with the concepts\nReviewed and graded homework assignments and offered detailed feedback to students\nMaintained regular communication with the professor to provide updates on homework and identify challenges for students\n\n\n\n\nRanks of Elliptic Curves via Class Groups (Independent Research)\nAug. 2024 - Dec. 2024\n\nFocused on novel methods to determine the ranks of elliptic curves; an independent study instructed by Prof. Edray Goins\nRead books to understand elliptic curves, then read through Professor Goins’s personal notes on his algorithm\nWrote a paper and gave a presentation on an algorithm that computes the rank of elliptic curves in a specific form (zeros in the constant term) as well as its proof and examples\n\nThe Riemann Mapping Theorem and Its Applications to Geometry\nOct. 2023 - Dec. 2023\n\nExplored the foundational Riemann Mapping Theorem by reading its proof and understanding its applications in geometry and complex analysis\nConstructed explicit biholomorphic mappings using coding tools\n\n\n\n\n\nSkills: Python, R, C++\nLanguages: English (Fluent), Chinese (Native), Korean (Conversational)\nInterests: Soccer, Badminton, Music, Basketball"
+  },
+  {
+    "objectID": "room_draw_presentation.html",
+    "href": "room_draw_presentation.html",
+    "title": "Simulation of Room Draw",
+    "section": "",
+    "text": "Assume all the rooms are singles.\nEvery student is assigned a random order to pick the rooms.\nMax has three randomly generated preferred rooms.\nWhen it comes to Max’s turn to pick his room, if one of his preferred rooms is still available, then he gets his preferred room. Otherwise he doesn’t get it.\nThe goal is to find the probability of Max getting his preferred room given the total number of rooms and total number of students."
+  },
+  {
+    "objectID": "resume.html#junshu-max-feng",
+    "href": "resume.html#junshu-max-feng",
+    "title": "Max Feng",
+    "section": "",
+    "text": "EDUCATION\n\n\nPomona CollegeClaremont, CA\nBachelor of Arts, Mathematics Major, Data Science Minor Expected May 2026\n\nGPA: 3.95/4.0; Pomona College Scholar for Fall 2022, Fall 2023, Spring 2024 and Fall 2024\nRelevant Coursework: \n\n\n\nNumber Theory and Cryptography (Topics: Prime factorization, congruences and modular arithmetic, Fermat’s little theorem, Euler’s phi function, and quadratic reciprocity)\nPrinciples of Real Analysis I (Topics: Countable sets, least upper bounds and metric space topology including compactness, completeness, connectivity and uniform convergence)\nModern Geometry (Topics: Euclidean geometry, discrete geometry, hyperbolic geometry, elliptical geometry, and projective geometry)\nAbstract Algebra I (Algebra in Action: A Course in Groups, Rings, and Fields by S. Shahriari)\nDifferential Equations (Elementary Differential Equations (12th Edition) by Boyce, DiPrima, and Meade\n\n\n\nPROFESSIONAL EXPERIENCE\n\n\n1-2-1 Math Program at Pomona College      Claremont, CA\nTeaching Assistant                  Jun. 2024 - Aug. 2024\n\nMatched with 16 incoming freshmen at Pomona College and held two weekly meetings to discuss math problems and other topics regarding life at Pomona\nHeld two additional weekly open sessions for all students to ask any questions\nProvided feedback on students’ submitted problem sets\nOrganized social events for all students to get to know each other\n\n\n\nMathematics and Statistics Department at Pomona College Claremont, CA\nLinear Algebra (Math 60) Mentor & GraderAug. 2024 - Dec. 2024\n\nHosted weekly mentor sessions to help students enrolled in Math 60 with their homework assignments\nHeld review sessions to provide insight into sample problems and familiarize students with the concepts\nReviewed and graded homework assignments and offered detailed feedback to students\nMaintained regular communication with the professor to provide updates on homework and identify challenges for students\n\n\n\nPROJECTS\n\n\nRanks of Elliptic Curves via Class Groups (Independent Research) Aug. 2024 - Dec. 2024\n\nFocused on novel methods to determine the ranks of elliptic curves; an independent study instructed by Prof. Edray Goins\nRead books to understand elliptic curves, then read through Professor Goins’s personal notes on his algorithm\nWrote a paper and gave a presentation on an algorithm that computes the rank of elliptic curves in a specific form (zeros in the constant term) as well as its proof and examples\n\n\n\nThe Riemann Mapping Theorem and Its Applications to Geometry Oct. 2023 - Dec. 2023\n\nExplored the foundational Riemann Mapping Theorem by reading its proof and understanding its applications in geometry and complex analysis\nConstructed explicit biholomorphic mappings using coding tools\n\n\n\nADDITIONAL INFORMATION\n\n\n\nSkills: Python, R, C++\nLanguages: English (Fluent), Chinese (Native), Korean (Conversational)\n\nInterests: Soccer, Badminton, Music, Basketball"
+  },
+  {
+    "objectID": "resume.html#education",
+    "href": "resume.html#education",
+    "title": "Max (Junshu) Feng",
+    "section": "",
+    "text": "Pomona College\nClaremont, CA\nExpected May 2026\nBachelor of Arts, Mathematics Major, Data Science Minor\n\nGPA: 3.95/4.0; Pomona College Scholar for Fall 2022, Fall 2023, Spring 2024 and Fall 2024\nRelevant Coursework: \n\nNumber Theory and Cryptography (Topics: Prime factorization, congruences and modular arithmetic, Fermat’s little theorem, Euler’s phi function, and quadratic reciprocity)\nPrinciples of Real Analysis I (Topics: Countable sets, least upper bounds and metric space topology including compactness, completeness, connectivity and uniform convergence)\nModern Geometry (Topics: Euclidean geometry, discrete geometry, hyperbolic geometry, elliptical geometry, and projective geometry)\nAbstract Algebra I (Algebra in Action: A Course in Groups, Rings, and Fields by S. Shahriari)\nDifferential Equations (Elementary Differential Equations (12th Edition) by Boyce, DiPrima, and Meade)\nAdvanced Linear Algebra (Matrix Mathematics: A Second Course In Linear Algebra by Garcia and Horn)"
+  },
+  {
+    "objectID": "resume.html#professional-experience",
+    "href": "resume.html#professional-experience",
+    "title": "Max (Junshu) Feng",
+    "section": "",
+    "text": "1-2-1 Math Program at Pomona College\nClaremont, CA\nTeaching Assistant\nJun. 2024 - Aug. 2024\n\nMatched with 16 incoming freshmen at Pomona College and held two weekly meetings to discuss math problems and other topics regarding life at Pomona\nHeld two additional weekly open sessions for all students to ask any questions\nProvided feedback on students’ submitted problem sets\nOrganized social events for all students to get to know each other\n\n\nMathematics and Statistics Department at Pomona College\nClaremont, CA\nLinear Algebra (Math 60) Mentor & Grader\nAug. 2024 - Dec. 2024\n\nHosted weekly mentor sessions to help students enrolled in Math 60 with their homework assignments\nHeld review sessions to provide insight into sample problems and familiarize students with the concepts\nReviewed and graded homework assignments and offered detailed feedback to students\nMaintained regular communication with the professor to provide updates on homework and identify challenges for students"
+  },
+  {
+    "objectID": "resume.html#projects",
+    "href": "resume.html#projects",
+    "title": "Max (Junshu) Feng",
+    "section": "",
+    "text": "Ranks of Elliptic Curves via Class Groups (Independent Research)\nAug. 2024 - Dec. 2024\n\nFocused on novel methods to determine the ranks of elliptic curves; an independent study instructed by Prof. Edray Goins\nRead books to understand elliptic curves, then read through Professor Goins’s personal notes on his algorithm\nWrote a paper and gave a presentation on an algorithm that computes the rank of elliptic curves in a specific form (zeros in the constant term) as well as its proof and examples\n\nThe Riemann Mapping Theorem and Its Applications to Geometry\nOct. 2023 - Dec. 2023\n\nExplored the foundational Riemann Mapping Theorem by reading its proof and understanding its applications in geometry and complex analysis\nConstructed explicit biholomorphic mappings using coding tools"
+  },
+  {
+    "objectID": "resume.html#additional-information",
+    "href": "resume.html#additional-information",
+    "title": "Max (Junshu) Feng",
+    "section": "",
+    "text": "Skills: Python, R, C++\nLanguages: English (Fluent), Chinese (Native), Korean (Conversational)\nInterests: Soccer, Badminton, Music, Basketball"
   }
 ]

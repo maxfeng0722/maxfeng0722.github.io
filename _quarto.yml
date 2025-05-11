@@ -8,6 +8,8 @@ website:
     left:
       - href: index.qmd
         text: Home
+      - href: resume.qmd
+        text: Resume
       - text: "Data Viz"
         menu: 
           - href: us_solar.qmd

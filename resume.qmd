@@ -1,0 +1,97 @@
+---
+format: html
+toc: false
+---
+
+# Max (Junshu) Feng
+
+**Email:** jfwv2022\@mymail.pomona.edu \| **Phone:** (909) 367 - 6812 \| Claremont, CA 91711
+
+## Education
+
+**Pomona College**
+
+Claremont, CA
+
+Expected May 2026
+
+Bachelor of Arts, Mathematics Major, Data Science Minor
+
+-   GPA: 3.95/4.0; Pomona College Scholar for Fall 2022, Fall 2023, Spring 2024 and Fall 2024
+
+-   Relevant Coursework: 
+
+    -   Number Theory and Cryptography (Topics: Prime factorization, congruences and modular arithmetic, Fermat's little theorem, Euler's phi function, and quadratic reciprocity)
+
+    -   Principles of Real Analysis I (Topics: Countable sets, least upper bounds and metric space topology including compactness, completeness, connectivity and uniform convergence)
+
+    -   Modern Geometry (Topics: Euclidean geometry, discrete geometry, hyperbolic geometry, elliptical geometry, and projective geometry)
+
+    -   Abstract Algebra I (*Algebra in Action: A Course in Groups, Rings, and Fields* by S. Shahriari)
+
+    -   Differential Equations (*Elementary Differential Equations* (12th Edition) by Boyce, DiPrima, and Meade)
+
+    -   Advanced Linear Algebra (*Matrix Mathematics: A Second Course In Linear Algebra* by Garcia and Horn)
+
+## Professional Experience
+
+**1-2-1 Math Program at Pomona College**
+
+Claremont, CA
+
+Teaching Assistant
+
+Jun. 2024 - Aug. 2024
+
+-   Matched with 16 incoming freshmen at Pomona College and held two weekly meetings to discuss math problems and other topics regarding life at Pomona
+
+-   Held two additional weekly open sessions for all students to ask any questions
+
+-   Provided feedback on students’ submitted problem sets
+
+-   Organized social events for all students to get to know each other
+
+\
+**Mathematics and Statistics Department at Pomona College**
+
+Claremont, CA
+
+Linear Algebra (Math 60) Mentor & Grader
+
+Aug. 2024 - Dec. 2024
+
+-   Hosted weekly mentor sessions to help students enrolled in Math 60 with their homework assignments
+
+-   Held review sessions to provide insight into sample problems and familiarize students with the concepts
+
+-   Reviewed and graded homework assignments and offered detailed feedback to students
+
+-   Maintained regular communication with the professor to provide updates on homework and identify challenges for students
+
+## Projects
+
+**Ranks of Elliptic Curves via Class Groups (Independent Research)**
+
+Aug. 2024 - Dec. 2024
+
+-   Focused on novel methods to determine the ranks of elliptic curves; an independent study instructed by Prof. Edray Goins
+
+-   Read books to understand elliptic curves, then read through Professor Goins’s personal notes on his algorithm
+
+-   Wrote a paper and gave a presentation on an algorithm that computes the rank of elliptic curves in a specific form (zeros in the constant term) as well as its proof and examples
+
+**The Riemann Mapping Theorem and Its Applications to Geometry**
+
+Oct. 2023 - Dec. 2023
+
+-   Explored the foundational Riemann Mapping Theorem by reading its proof and understanding its applications in geometry and complex analysis
+
+-   Constructed explicit biholomorphic mappings using coding tools
+
+## Additional Information
+
+-   **Skills**: Python, R, C++
+
+-   **Languages**: English (Fluent), Chinese (Native), Korean (Conversational)
+
+-   **Interests**: Soccer, Badminton, Music, Basketball
