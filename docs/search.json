@@ -61,5 +61,61 @@
     "title": "SQL",
     "section": "References",
     "text": "References\nPierson, Emma, Camelia Simoiu, Jan Overgoor, Sam Corbett-Davies, Daniel Jenson, Amy Shoemaker, Vignesh Ramachandran, et al. 2020. “A Large-Scale Analysis of Racial Disparities in Police Stops Across the United States.” Nature Human Behaviour, 1–10."
+  },
+  {
+    "objectID": "room_draw_presentation.html#my-first-presentation",
+    "href": "room_draw_presentation.html#my-first-presentation",
+    "title": "Simulation of Room Draw",
+    "section": "My First Presentation",
+    "text": "My First Presentation\nnice"
+  },
+  {
+    "objectID": "room_draw_presentation.html#my-second-presentation",
+    "href": "room_draw_presentation.html#my-second-presentation",
+    "title": "Simulation of Room Draw",
+    "section": "My Second Presentation",
+    "text": "My Second Presentation\nok"
+  },
+  {
+    "objectID": "room_draw_presentation.html#room-draw-simulation",
+    "href": "room_draw_presentation.html#room-draw-simulation",
+    "title": "Simulation of Room Draw",
+    "section": "Room Draw Simulation",
+    "text": "Room Draw Simulation\n\nAssume all the rooms are singles.\nEvery student is assigned a random order to pick the rooms.\nMax has three randomly generated preferred rooms.\nWhen it comes to Max’s turn to pick his room, if one of his preferred rooms is still available, then he gets his preferred room. Otherwise he doesn’t get it.\nThe goal is to find the probability of Max getting his preferred room given the total number of rooms and total number of students."
+  },
+  {
+    "objectID": "room_draw_presentation.html#my-code",
+    "href": "room_draw_presentation.html#my-code",
+    "title": "Simulation of Room Draw",
+    "section": "My Code",
+    "text": "My Code\n\nlibrary(tidyverse)\nlibrary(ggrepel)\nlibrary(ggplot2)\nroom_draw &lt;- function(room, student, preference){\n  room_number &lt;- 1:room\n  my_order &lt;- sample(1:student, 1)\n  my_preferred_room &lt;- sample(room_number, preference, replace = FALSE)\n  earlier_picks &lt;- c()\n  if (my_order != 1) {\n    earlier_picks &lt;- sample(room_number, my_order - 1)\n  }\n  for (i in my_preferred_room){\n    if (!(i %in% earlier_picks)) {\n      return (TRUE)\n    }\n  }\n  return (FALSE)\n}"
+  },
+  {
+    "objectID": "room_draw_presentation.html#an-example",
+    "href": "room_draw_presentation.html#an-example",
+    "title": "Simulation of Room Draw",
+    "section": "An Example",
+    "text": "An Example\n\nroom_draw_2 &lt;- function(room, student, preference){\n  room_number &lt;- 1:room\n  my_order &lt;- sample(1:student, 1)\n  my_preferred_room &lt;- sample(room_number, preference, replace = FALSE)\n  earlier_picks &lt;- c()\n  if (my_order != 1) {\n    earlier_picks &lt;- sample(room_number, my_order - 1)\n  }\n  print(my_preferred_room)\n  print(earlier_picks)\n  for (i in my_preferred_room){\n    if (!(i %in% earlier_picks)) {\n      return (TRUE)\n    }\n  }\n  return (FALSE)\n}\nset.seed(47)\nexample &lt;- room_draw_2(100, 80, 3)\n\n[1] 57 15 84\n [1]  1 26 13 23 70  9 54  6 12  8 69 27 11 92 41 74 37 48 51 59 17 30 16 45 80\n[26]  5\n\nexample\n\n[1] TRUE"
+  },
+  {
+    "objectID": "room_draw_presentation.html#simulation",
+    "href": "room_draw_presentation.html#simulation",
+    "title": "Simulation of Room Draw",
+    "section": "Simulation",
+    "text": "Simulation\n\nsimulation &lt;- function(room, student, preference = 3, n = 1000){\n  return(sum(replicate(n, room_draw(room, student, preference))))\n}\n\ndf &lt;- expand_grid(student = seq(400, 1600, by = 50),\n                  ratio = seq(1.0, 2.0, by = 0.1), # ratio of room number to student number\n                  preference = c(3)) |&gt;\n  mutate(room = student * ratio)\n\nset.seed(47)\nsim_results &lt;- df |&gt;\n  mutate(\n    success = pmap(list(room, student, preference), \n                  ~ simulation(room = ..1, student = ..2, preference = ..3)),\n    prob = as.numeric(success) / 1000\n    )\nhead(df)\n\n# A tibble: 6 × 4\n  student ratio preference  room\n    &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt; &lt;dbl&gt;\n1     400   1            3   400\n2     400   1.1          3   440\n3     400   1.2          3   480\n4     400   1.3          3   520\n5     400   1.4          3   560\n6     400   1.5          3   600\n\nhead(sim_results)\n\n# A tibble: 6 × 6\n  student ratio preference  room success    prob\n    &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt; &lt;dbl&gt; &lt;list&gt;    &lt;dbl&gt;\n1     400   1            3   400 &lt;int [1]&gt; 0.728\n2     400   1.1          3   440 &lt;int [1]&gt; 0.821\n3     400   1.2          3   480 &lt;int [1]&gt; 0.871\n4     400   1.3          3   520 &lt;int [1]&gt; 0.892\n5     400   1.4          3   560 &lt;int [1]&gt; 0.909\n6     400   1.5          3   600 &lt;int [1]&gt; 0.922"
+  },
+  {
+    "objectID": "room_draw_presentation.html#visualization-of-results",
+    "href": "room_draw_presentation.html#visualization-of-results",
+    "title": "Simulation of Room Draw",
+    "section": "Visualization of Results",
+    "text": "Visualization of Results\n\n\nexpand for full code\nggplot(sim_results, aes(x = student, y = prob)) +\n  geom_point() +\n  geom_text_repel(aes(label = room), size = 1.5) +\n  labs(\n    title = \"Room Draw Success Probability 1\",\n    x = \"Number of Students\",\n    y = \"Probability of Getting a Preferred Room\"\n  )"
+  },
+  {
+    "objectID": "room_draw_presentation.html#visualization-of-results-1",
+    "href": "room_draw_presentation.html#visualization-of-results-1",
+    "title": "Simulation of Room Draw",
+    "section": "Visualization of Results",
+    "text": "Visualization of Results\n\n\nexpand for full code\nggplot(sim_results, aes(x = room, y = prob)) +\n  geom_point() +\n  geom_text_repel(aes(label = student), size = 1.0) +\n  labs(\n    title = \"Room Draw Success Probability 2\",\n    x = \"Number of Rooms\",\n    y = \"Probability of Getting a Preferred Room\"\n  )"
   }
 ]

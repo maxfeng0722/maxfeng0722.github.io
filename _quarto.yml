@@ -22,6 +22,8 @@ website:
         text: Ethics
       - href: SQL.qmd
         text: SQL
+      - href: room_draw_presentation.qmd
+        text: Simulation Analysis Presentation
 format:
   html:
     theme: cosmo

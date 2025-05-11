@@ -1,0 +1,130 @@
+---
+title: "Simulation of Room Draw"
+author: "Max Feng"
+subtitle: "May 13, 2025"
+format:
+  revealjs:
+    scrollable: true
+    slide-number: true
+    show-slide-number: all
+    embed-resources: true
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+## Room Draw Simulation
+
+-   Assume all the rooms are singles.
+
+-   Every student is assigned a random order to pick the rooms.
+
+-   Max has three randomly generated preferred rooms.
+
+-   When it comes to Max's turn to pick his room, if one of his preferred rooms is still available, then he gets his preferred room. Otherwise he doesn't get it.
+
+-   The goal is to find the probability of Max getting his preferred room given the total number of rooms and total number of students.
+
+## My Code
+
+```{r}
+library(tidyverse)
+library(ggrepel)
+library(ggplot2)
+room_draw <- function(room, student, preference){
+  room_number <- 1:room
+  my_order <- sample(1:student, 1)
+  my_preferred_room <- sample(room_number, preference, replace = FALSE)
+  earlier_picks <- c()
+  if (my_order != 1) {
+    earlier_picks <- sample(room_number, my_order - 1)
+  }
+  for (i in my_preferred_room){
+    if (!(i %in% earlier_picks)) {
+      return (TRUE)
+    }
+  }
+  return (FALSE)
+}
+```
+
+## An Example
+
+```{r}
+room_draw_2 <- function(room, student, preference){
+  room_number <- 1:room
+  my_order <- sample(1:student, 1)
+  my_preferred_room <- sample(room_number, preference, replace = FALSE)
+  earlier_picks <- c()
+  if (my_order != 1) {
+    earlier_picks <- sample(room_number, my_order - 1)
+  }
+  print(my_preferred_room)
+  print(earlier_picks)
+  for (i in my_preferred_room){
+    if (!(i %in% earlier_picks)) {
+      return (TRUE)
+    }
+  }
+  return (FALSE)
+}
+set.seed(47)
+example <- room_draw_2(100, 80, 3)
+example
+```
+
+## Simulation
+
+```{r}
+simulation <- function(room, student, preference = 3, n = 1000){
+  return(sum(replicate(n, room_draw(room, student, preference))))
+}
+
+df <- expand_grid(student = seq(400, 1600, by = 50),
+                  ratio = seq(1.0, 2.0, by = 0.1), # ratio of room number to student number
+                  preference = c(3)) |>
+  mutate(room = student * ratio)
+
+set.seed(47)
+sim_results <- df |>
+  mutate(
+    success = pmap(list(room, student, preference), 
+                  ~ simulation(room = ..1, student = ..2, preference = ..3)),
+    prob = as.numeric(success) / 1000
+    )
+head(df)
+head(sim_results)
+```
+
+## Visualization of Results
+
+```{r}
+#| echo: true
+#| code-fold: true
+#| code-summary: "expand for full code"
+ggplot(sim_results, aes(x = student, y = prob)) +
+  geom_point() +
+  geom_text_repel(aes(label = room), size = 1.5) +
+  labs(
+    title = "Room Draw Success Probability 1",
+    x = "Number of Students",
+    y = "Probability of Getting a Preferred Room"
+  )
+```
+
+## Visualization of Results
+
+```{r}
+#| echo: true
+#| code-fold: true
+#| code-summary: "expand for full code"
+ggplot(sim_results, aes(x = room, y = prob)) +
+  geom_point() +
+  geom_text_repel(aes(label = student), size = 1.0) +
+  labs(
+    title = "Room Draw Success Probability 2",
+    x = "Number of Rooms",
+    y = "Probability of Getting a Preferred Room"
+  )
+```
