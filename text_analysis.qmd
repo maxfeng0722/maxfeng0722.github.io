@@ -45,7 +45,7 @@ ggplot(new_netflix_titles, aes(x = title_length)) +
        x = "length of titles")
 ```
 
-In this analysis, I made a histogram of the distribution of title lengths of the shows in Netflix. The x-axis is the value of different lengths, and the y-axis is the number of shows at a certain value of the title length. In general, the distribution is right-skewed. Most shows have the title length between 8-16 characters. Very few shows have the title length greater than 50 characters.
+The original data set lists all TV shows and movies on Netflix. The columns include id, type, title, director, cast, country, added date, release year, rating systems, duration, genres, and description. In this analysis, I made a histogram of the distribution of title lengths of the shows in Netflix. The x-axis is the value of different lengths, and the y-axis is the number of shows at a certain value of the title length. In general, the distribution is right-skewed. Most shows have the title length between 8-16 characters. Very few shows have the title length greater than 50 characters.
 
 Part III: Rating Systems of the Shows
 
