@@ -256,7 +256,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>In this analysis, I made a histogram of the distribution of title lengths of the shows in Netflix. The x-axis is the value of different lengths, and the y-axis is the number of shows at a certain value of the title length. In general, the distribution is right-skewed. Most shows have the title length between 8-16 characters. Very few shows have the title length greater than 50 characters.</p>
+<p>The original data set lists all TV shows and movies on Netflix. The columns include id, type, title, director, cast, country, added date, release year, rating systems, duration, genres, and description. In this analysis, I made a histogram of the distribution of title lengths of the shows in Netflix. The x-axis is the value of different lengths, and the y-axis is the number of shows at a certain value of the title length. In general, the distribution is right-skewed. Most shows have the title length between 8-16 characters. Very few shows have the title length greater than 50 characters.</p>
 <p>Part III: Rating Systems of the Shows</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(netflix_titles, <span class="fu">aes</span>(<span class="at">x =</span> rating, <span class="at">fill =</span> rating)) <span class="sc">+</span></span>
