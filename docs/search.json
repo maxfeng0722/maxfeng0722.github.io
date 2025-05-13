@@ -80,8 +80,8 @@
     "objectID": "room_draw_presentation.html#room-draw-simulation",
     "href": "room_draw_presentation.html#room-draw-simulation",
     "title": "Simulation of Room Draw",
-    "section": "",
-    "text": "Assume all the rooms are singles.\nEvery student is assigned a random order to pick the rooms.\nMax has three randomly generated preferred rooms.\nWhen it comes to Max’s turn to pick his room, if one of his preferred rooms is still available, then he gets his preferred room. Otherwise he doesn’t get it.\nThe goal is to find the probability of Max getting his preferred room given the total number of rooms and total number of students."
+    "section": "Room Draw Simulation",
+    "text": "Room Draw Simulation\n\nAssume all the rooms are singles.\nEvery student is assigned a random order to pick the rooms.\nMax has three randomly generated preferred rooms.\nWhen it comes to Max’s turn to pick his room, if one of his preferred rooms is still available, then he gets his preferred room. Otherwise he doesn’t get it.\nThe goal is to find the probability of Max getting his preferred room given the total number of rooms and total number of students."
   },
   {
     "objectID": "room_draw_presentation.html#my-code",
